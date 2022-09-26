@@ -1,8 +1,6 @@
 package game;
 
-import java.util.Stack;
-
-public class ConsoleInterface {
+public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
