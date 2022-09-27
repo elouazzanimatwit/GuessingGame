@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Scanner;
+
 public class GuessingGame {
 
 	private LinkedBag <Integer> user;
@@ -37,8 +39,23 @@ public class GuessingGame {
 		user.clear();
 	}
 	
-	public static void play() {
+	public static void play(GuessingGame g, Scanner input) {
+		int size = input.nextInt();
+		int range = input.nextInt();
+		g.initializeGame(size, range);
 		
+		for(int i = 1; i <= g.getSize(); i++) {
+			System.out.println("Hello User! Please input your guess for element #" + (i));
+			int guess = input.nextInt();
+			g.addFromUser(guess);
+		}
+		
+		if(g.numIntersections() == size) {
+			System.out.println("You Won!");
+		} else {
+			g.clearUser();
+			System.out.println("You Lose!");
+		}
 	}
 	
 }
