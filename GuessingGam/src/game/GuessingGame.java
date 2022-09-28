@@ -1,5 +1,6 @@
 package game;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class GuessingGame {
@@ -17,9 +18,10 @@ public class GuessingGame {
 	}
 	
 	private void initializeGame(int size, int range) {
+		Random random = new Random();
 		for(int i = 0; i < size; i++) {
-			int a = (int) ((Math.random() * (range - 1)) + 1);
-			game.add(a);
+		    int much =random.nextInt(range - 2) + 2;
+			game.add(much);
 		}
 	}
 	
@@ -32,7 +34,7 @@ public class GuessingGame {
 	}
 	
 	private int numIntersections() {
-		return game.intersection(user).getCurrentSize();
+		return (game.intersection(user)).getCurrentSize();
 	}
 	
 	private void clearUser() {
@@ -44,17 +46,20 @@ public class GuessingGame {
 		int range = input.nextInt();
 		g.initializeGame(size, range);
 		
-		for(int i = 1; i <= g.getSize(); i++) {
+		int i = 1;
+		
+		while(i < g.getSize()+1) {
 			System.out.println("Hello User! Please input your guess for element #" + (i));
 			int guess = input.nextInt();
 			g.addFromUser(guess);
+			i++;
 		}
 		
-		if(g.numIntersections() == size) {
-			System.out.println("You Won!");
-		} else {
-			g.clearUser();
+		if(g.numIntersections() == g.getSize()) {
+			System.out.println("You Win!");
+		} else{
 			System.out.println("You Lose!");
+			g.clearUser();
 		}
 	}
 	
