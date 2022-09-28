@@ -1,8 +1,9 @@
 package utils;
 
 public class Node <T> {
+
 	private T data;
-	private Node<T> next;
+	private  Node<T> next;
 	
 	private Node (T data, Node<T> nextNode) {
 		this.data = data;
@@ -14,13 +15,14 @@ public class Node <T> {
 	public T getData() {
 		return data;
 	}
-	public Node <T> getNext() {
+	public Node <T>getNext() {
 		return next;
 	}
 	public void setData (T data) { this.data = data;}
 	public void setNext(Node <T> next) {
 		this.next = next;
 	}
+
 
 }
 
